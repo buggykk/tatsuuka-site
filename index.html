@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Морозов — тату-мастер</title>
+    <meta
+      name="description"
+      content="Портфолио тату-мастера. Blackwork, fine line, реализм и орнамент."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Manrope:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <span class="logo">Морозов</span>
+      <div class="menu" data-menu>
+        <button
+          class="menu__toggle"
+          type="button"
+          data-menu-toggle
+          aria-expanded="false"
+          aria-controls="site-menu"
+        >
+          <span class="menu__toggle-label">Меню</span>
+          <span class="menu__toggle-icon" aria-hidden="true">
+            <span></span>
+            <span></span>
+          </span>
+        </button>
+        <nav class="menu__panel" id="site-menu" data-menu-panel hidden>
+          <a class="menu__link" href="#about" data-menu-close>О мастере</a>
+          <div class="menu__item" data-submenu>
+            <button
+              class="menu__link menu__link--btn"
+              type="button"
+              data-submenu-toggle
+              aria-expanded="false"
+            >
+              Портфолио
+              <span class="menu__chevron" aria-hidden="true"></span>
+            </button>
+            <div class="menu__submenu" data-submenu-panel hidden>
+              <a href="styles/blackwork.html">Blackwork</a>
+              <a href="styles/fine-line.html">Fine Line</a>
+              <a href="styles/realism.html">Реализм</a>
+              <a href="styles/ornamental.html">Орнамент</a>
+              <a href="#portfolio" data-menu-close>Все стили</a>
+            </div>
+          </div>
+          <a class="menu__link" href="#contacts" data-menu-close>Контакты</a>
+        </nav>
+      </div>
+    </header>
+
+    <section class="hero" aria-label="Студия">
+      <div class="carousel" data-carousel>
+        <div class="carousel__track">
+          <div class="carousel__slide is-active" data-slide>
+            <!-- Замените src на свой studio.gif — сейчас стоит фото-заглушка -->
+            <img
+              src="D:\cursor_site\Rotating_earth_(large).gif"
+              alt="Обзор тату-студии"
+            />
+          </div>
+          <div class="carousel__slide" data-slide>
+            <img
+              src="https://images.unsplash.com/photo-1611501275019-9b5cda994e8f?auto=format&fit=crop&w=1800&q=80"
+              alt="Рабочее место мастера"
+            />
+          </div>
+          <div class="carousel__slide" data-slide>
+            <img
+              src="https://images.unsplash.com/photo-1598371839696-5c5bb00b6ef0?auto=format&fit=crop&w=1800&q=80"
+              alt="Интерьер студии"
+            />
+          </div>
+          <div class="carousel__slide" data-slide>
+            <img
+              src="https://images.unsplash.com/photo-1590247813693-5541d1c609fd?auto=format&fit=crop&w=1800&q=80"
+              alt="Процесс работы"
+            />
+          </div>
+        </div>
+
+        <div class="carousel__overlay">
+          <h1 class="carousel__brand">Морозов</h1>
+          <p class="carousel__lead">
+            Авторские татуировки. Чистые линии, продуманная композиция, спокойная
+            студия в центре города.
+          </p>
+        </div>
+
+        <div class="carousel__dots" data-dots aria-label="Слайды студии"></div>
+
+        <div class="carousel__controls">
+          <button class="carousel__btn" type="button" data-prev aria-label="Предыдущее фото">
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.5" />
+            </svg>
+          </button>
+          <button class="carousel__btn" type="button" data-next aria-label="Следующее фото">
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <article class="about-block reveal">
+        <div class="about-copy">
+          <span class="section-label">О мастере</span>
+          <h2>Работаю с формой и смыслом, а не с трендами сезона</h2>
+          <p>
+            Меня зовут Алексей Морозов. Больше восьми лет я занимаюсь татуировкой:
+            от тонких персональных эскизов до крупных проектов, которые живут вместе
+            с человеком годами.
+          </p>
+          <p>
+            В студии спокойная атмосфера, стерильность и внимание к деталям —
+            от первой консультации до ухода после сеанса.
+          </p>
+        </div>
+        <div class="about-media">
+          <img
+            src="https://images.unsplash.com/photo-1595476108010-b4d1f357b2a5?auto=format&fit=crop&w=1200&q=80"
+            alt="Тату-мастер за работой"
+          />
+        </div>
+      </article>
+
+      <article class="about-block about-block--reverse reveal">
+        <div class="about-copy">
+          <span class="section-label">Студия</span>
+          <h2>Пространство, где можно не спешить</h2>
+          <p>
+            Небольшая частная студия с естественным светом и минимумом лишнего.
+            Здесь удобно обсуждать идею, смотреть референсы и спокойно проходить
+            длинные сеансы.
+          </p>
+          <p>
+            Перед записью всегда есть короткая консультация: стиль, размер,
+            размещение и сроки заживления.
+          </p>
+        </div>
+        <div class="about-media">
+          <img
+            src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?auto=format&fit=crop&w=1200&q=80"
+            alt="Интерьер тату-студии"
+          />
+        </div>
+      </article>
+
+      <article class="about-block reveal">
+        <div class="about-copy">
+          <span class="section-label">Подход</span>
+          <h2>Каждая работа — отдельный проект</h2>
+          <p>
+            Я не копирую чужие эскизы один в один. Берём вашу идею, адаптируем под
+            анатомию и собираем композицию так, чтобы она смотрелась цельно и через
+            пять, и через пятнадцать лет.
+          </p>
+        </div>
+        <div class="about-media">
+          <img
+            src="https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?auto=format&fit=crop&w=1200&q=80"
+            alt="Эскизы и инструменты"
+          />
+        </div>
+      </article>
+    </section>
+
+    <section class="section categories" id="portfolio">
+      <div class="categories__header reveal">
+        <span class="section-label">Портфолио</span>
+        <h2 class="section-title">Стили</h2>
+        <p class="section-text">
+          Выберите направление, чтобы посмотреть примеры работ.
+        </p>
+      </div>
+
+      <div class="category-grid reveal">
+        <a class="category-card" href="styles/blackwork.html">
+          <img
+            src="https://images.unsplash.com/photo-1568515045052-f9a854d11783?auto=format&fit=crop&w=1200&q=80"
+            alt="Blackwork"
+          />
+          <div class="category-card__label">
+            <span>Blackwork</span>
+            <small>Графика и плотные заливки</small>
+          </div>
+        </a>
+        <a class="category-card" href="styles/fine-line.html">
+          <img
+            src="https://images.unsplash.com/photo-1611501275019-9b5cda994e8f?auto=format&fit=crop&w=1200&q=80"
+            alt="Fine line"
+          />
+          <div class="category-card__label">
+            <span>Fine Line</span>
+            <small>Тонкие линии и минимализм</small>
+          </div>
+        </a>
+        <a class="category-card" href="styles/realism.html">
+          <img
+            src="https://images.unsplash.com/photo-1590247813693-5541d1c609fd?auto=format&fit=crop&w=1200&q=80"
+            alt="Реализм"
+          />
+          <div class="category-card__label">
+            <span>Реализм</span>
+            <small>Свет, объём, детализация</small>
+          </div>
+        </a>
+        <a class="category-card" href="styles/ornamental.html">
+          <img
+            src="https://images.unsplash.com/photo-1598371839696-5c5bb00b6ef0?auto=format&fit=crop&w=1200&q=80"
+            alt="Орнамент"
+          />
+          <div class="category-card__label">
+            <span>Орнамент</span>
+            <small>Узоры и декоративные формы</small>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section class="section contacts" id="contacts">
+      <div class="section__inner contacts__grid reveal">
+        <div>
+          <span class="section-label">Контакты</span>
+          <h2 class="section-title">Запись и консультация</h2>
+          <p class="section-text">
+            Напишите идею, желаемый стиль и примерный размер — отвечу по срокам и
+            стоимости.
+          </p>
+          <ul class="contact-list">
+            <li>
+              <span class="label">Телефон</span>
+              <a href="tel:+79001234567">+7 (900) 123-45-67</a>
+            </li>
+            <li>
+              <span class="label">Telegram</span>
+              <a href="https://t.me/" target="_blank" rel="noopener">@morozov_tattoo</a>
+            </li>
+            <li>
+              <span class="label">Instagram</span>
+              <a href="https://instagram.com/" target="_blank" rel="noopener">@morozov.ink</a>
+            </li>
+            <li>
+              <span class="label">Адрес</span>
+              <span>Москва, ул. Примерная, 12</span>
+            </li>
+            <li>
+              <span class="label">Часы</span>
+              <span>Вт–Сб, 12:00–20:00</span>
+            </li>
+          </ul>
+        </div>
+        <aside class="contact-note">
+          <h3>Как проходит запись</h3>
+          <p>
+            1. Короткое сообщение с референсами.<br />
+            2. Согласование эскиза и даты.<br />
+            3. Предоплата для фиксации сеанса.<br />
+            4. Работа в студии и рекомендации по заживлению.
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <span>© 2026 Морозов Tattoo</span>
+      <span>Частная студия · Москва</span>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
