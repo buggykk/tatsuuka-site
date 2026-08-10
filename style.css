@@ -181,6 +181,7 @@ body.nav-open {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding-inline: clamp(1.5rem, 4vw, 3.5rem);
 }
 
 .brand {
