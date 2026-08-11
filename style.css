@@ -168,7 +168,8 @@ body.nav-open {
   transition: background-color var(--dur) var(--ease), border-color var(--dur) var(--ease), color var(--dur) var(--ease);
 }
 
-.site-header.is-scrolled {
+.site-header.is-scrolled,
+.site-header.is-solid {
   background-color: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -201,7 +202,6 @@ body.nav-open {
 .menu-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
   color: var(--header-fg, var(--color-ink));
   transition: color var(--dur) var(--ease);
 }
@@ -211,28 +211,6 @@ body.nav-open {
   font-size: 0.75rem;
   letter-spacing: var(--tracking-md);
   text-transform: uppercase;
-}
-
-.menu-btn__icon {
-  display: inline-flex;
-  flex-direction: column;
-  gap: 5px;
-  width: 22px;
-}
-
-.menu-btn__icon i {
-  display: block;
-  height: 1px;
-  background: currentColor;
-  transition: transform var(--dur) var(--ease), opacity var(--dur) var(--ease), background-color var(--dur) var(--ease);
-}
-
-.menu-btn[aria-expanded="true"] .menu-btn__icon i:first-child {
-  transform: translateY(3px) rotate(45deg);
-}
-
-.menu-btn[aria-expanded="true"] .menu-btn__icon i:last-child {
-  transform: translateY(-3px) rotate(-45deg);
 }
 
 /* ---------- 6. ПОЛНОЭКРАННОЕ МЕНЮ ---------- */
@@ -272,6 +250,15 @@ body.nav-open {
   border-bottom: 1px solid var(--color-line);
 }
 
+.site-nav__item--expandable {
+  align-items: flex-start;
+}
+
+.site-nav__expand {
+  flex: 1;
+  min-width: 0;
+}
+
 .site-nav__index {
   font-size: 0.8rem;
   color: var(--color-text-muted);
@@ -286,6 +273,11 @@ body.nav-open {
   letter-spacing: 0.02em;
 }
 
+.site-nav__toggle {
+  display: inline-block;
+  text-align: left;
+}
+
 .site-nav__link::after {
   content: "";
   position: absolute;
@@ -298,8 +290,44 @@ body.nav-open {
 }
 
 .site-nav__link:hover::after,
-.site-nav__link:focus-visible::after {
+.site-nav__link:focus-visible::after,
+.site-nav__toggle[aria-expanded="true"]::after {
   right: 0;
+}
+
+.site-nav__sub {
+  display: grid;
+  gap: 0.65rem;
+  margin-top: 0;
+  padding-bottom: 0;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+  transition: max-height var(--dur) var(--ease), opacity var(--dur) var(--ease), margin-top var(--dur) var(--ease);
+}
+
+.site-nav__sub.is-open {
+  margin-top: 1rem;
+  max-height: 20rem;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.site-nav__sub-link {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: clamp(0.95rem, 0.85rem + 0.4vw, 1.15rem);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  transition: color var(--dur) var(--ease);
+}
+
+.site-nav__sub-link:hover,
+.site-nav__sub-link:focus-visible {
+  color: var(--color-ink);
 }
 
 .site-nav__meta {
@@ -371,11 +399,10 @@ body.nav-open {
   object-fit: cover;
 }
 
-/* ---------- стрелка переключения слайдов ---------- */
-.hero__next {
+/* ---------- стрелки переключения слайдов ---------- */
+.hero__nav {
   position: absolute;
   top: 50%;
-  right: clamp(1.25rem, 4vw, 3rem);
   z-index: 2;
   transform: translateY(-50%);
   display: flex;
@@ -385,28 +412,35 @@ body.nav-open {
   color: #ffffff;
 }
 
-.hero__next-count {
+.hero__nav--prev {
+  left: clamp(1.25rem, 4vw, 3rem);
+}
+
+.hero__nav--next {
+  right: clamp(1.25rem, 4vw, 3rem);
+}
+
+.hero__nav-count {
   font-family: var(--font-display);
   font-size: 0.7rem;
   letter-spacing: var(--tracking-sm);
   color: rgba(255, 255, 255, 0.75);
 }
 
-.hero__next-line {
-  width: 1px;
-  height: 40px;
-  background: rgba(255, 255, 255, 0.5);
-}
-
-.hero__next-arrow {
+.hero__nav-arrow {
   font-family: var(--font-display);
   font-size: 1.35rem;
   line-height: 1;
   transition: transform var(--dur) var(--ease);
 }
 
-.hero__next:hover .hero__next-arrow,
-.hero__next:focus-visible .hero__next-arrow {
+.hero__nav--prev:hover .hero__nav-arrow,
+.hero__nav--prev:focus-visible .hero__nav-arrow {
+  transform: translateX(-6px);
+}
+
+.hero__nav--next:hover .hero__nav-arrow,
+.hero__nav--next:focus-visible .hero__nav-arrow {
   transform: translateX(6px);
 }
 
@@ -665,6 +699,71 @@ body.nav-open {
   right: 0;
 }
 
+/* ---------- 12. СТРАНИЦА НАПРАВЛЕНИЯ (галерея работ) ---------- */
+.page-style {
+  padding-top: clamp(2.5rem, 6vw, 4rem);
+  padding-bottom: var(--section-py);
+}
+
+.page-style__header {
+  margin-bottom: clamp(2.5rem, 6vw, 4rem);
+}
+
+.page-style__back {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: var(--tracking-md);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  transition: color var(--dur) var(--ease);
+}
+
+.page-style__back:hover,
+.page-style__back:focus-visible {
+  color: var(--color-ink);
+}
+
+.page-style__title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 1.5rem + 3vw, 4rem);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.75rem;
+}
+
+.page-style__lead {
+  max-width: 36rem;
+  color: var(--color-text-muted);
+  font-size: 1rem;
+}
+
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(0.75rem, 2vw, 1.5rem);
+}
+
+.works-grid__item {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: #111;
+}
+
+.works-grid__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease);
+}
+
+.works-grid__item:hover img {
+  transform: scale(1.03);
+}
+
 .site-footer__bottom {
   display: flex;
   justify-content: space-between;
@@ -696,10 +795,6 @@ body.nav-open {
 }
 
 @media (max-width: 720px) {
-  .menu-btn__label {
-    display: none;
-  }
-
   .styles__item {
     grid-template-columns: 32px 1fr;
     row-gap: 0.5rem;
@@ -711,6 +806,10 @@ body.nav-open {
 
   .styles__arrow {
     display: none;
+  }
+
+  .works-grid {
+    grid-template-columns: 1fr;
   }
 
   .site-footer__top {
