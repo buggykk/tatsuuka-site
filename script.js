@@ -42,7 +42,7 @@
     updateHeaderState();
 
     // 3. Возвращаем текст Menu
-    if (menuLabel) menuLabel.textContent = "Menu";
+    if (menuLabel) menuLabel.textContent = "Меню";
   }
 
   menuToggle.addEventListener("click", function () {
