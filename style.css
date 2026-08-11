@@ -752,3 +752,23 @@ body.nav-open {
     gap: 0.75rem;
   }
 }
+/* Мобильные устройства (по умолчанию): 1 колонка */
+.works-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.works-grid__item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Десктоп и планшеты (от 768px): 2 колонки */
+@media (min-width: 768px) {
+  .works-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
