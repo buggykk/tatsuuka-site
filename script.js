@@ -19,13 +19,18 @@
     stylesToggle.setAttribute("aria-expanded", open ? "true" : "false");
   }
 
+// 1. Находим лейбл кнопки (добавьте эту строку перед функциями):
+  const menuLabel = menuToggle.querySelector(".menu-btn__label");
+
   function openNav() {
     nav.classList.add("is-open");
     nav.setAttribute("aria-hidden", "false");
     menuToggle.setAttribute("aria-expanded", "true");
     body.classList.add("nav-open");
-    // поверх открытого меню (белый фон) хедер всегда должен быть тёмным
     header.classList.add("is-scrolled");
+
+    // 2. Меняем текст на Закрыть (или Close)
+    if (menuLabel) menuLabel.textContent = "Закрыть";
   }
 
   function closeNav() {
@@ -34,8 +39,10 @@
     menuToggle.setAttribute("aria-expanded", "false");
     body.classList.remove("nav-open");
     setStylesSubOpen(false);
-    // возвращаем фактическое состояние хедера в зависимости от скролла
     updateHeaderState();
+
+    // 3. Возвращаем текст Menu
+    if (menuLabel) menuLabel.textContent = "Menu";
   }
 
   menuToggle.addEventListener("click", function () {
