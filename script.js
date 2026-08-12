@@ -168,4 +168,24 @@
 
     updateHeroSlide();
   }
+// ---------- STYLES: Интерактивная смена фото при ховере ----------
+  const styleItems = document.querySelectorAll("[data-style-target]");
+  const styleImages = document.querySelectorAll("[data-style-img]");
+
+  if (styleItems.length && styleImages.length) {
+    styleItems.forEach(function (item) {
+      item.addEventListener("mouseenter", function () {
+        const targetId = item.getAttribute("data-style-target");
+
+        styleItems.forEach(function (el) {
+          el.classList.toggle("is-active", el === item);
+        });
+
+        styleImages.forEach(function (img) {
+          const imgId = img.getAttribute("data-style-img");
+          img.classList.toggle("is-active", imgId === targetId);
+        });
+      });
+    });
+  }
 })();

@@ -47,11 +47,14 @@
               Направления
             </button>
             <ul class="site-nav__sub" id="nav-styles" data-nav-styles>
-              <li><a href="styles/fine-line.html" class="site-nav__sub-link" data-nav-link>Fine Line</a></li>
-              <li><a href="styles/blackwork.html" class="site-nav__sub-link" data-nav-link>Blackwork</a></li>
-              <li><a href="styles/minimalism.html" class="site-nav__sub-link" data-nav-link>Minimalism</a></li>
-              <li><a href="styles/ornamental.html" class="site-nav__sub-link" data-nav-link>Ornamental</a></li>
-              <li><a href="styles/dotwork.html" class="site-nav__sub-link" data-nav-link>Dotwork</a></li>
+              <li><a href="styles/trash-polka.html" class="site-nav__sub-link" data-nav-link>Трешполька</a></li>
+              <li><a href="styles/graphics.html" class="site-nav__sub-link" data-nav-link>Графика</a></li>
+              <li><a href="styles/graphic-realism.html" class="site-nav__sub-link" data-nav-link>Графика с реализмом</a></li>
+              <li><a href="styles/color.html" class="site-nav__sub-link" data-nav-link>Цветная Татуировка</a></li>
+              <li><a href="styles/realism.html" class="site-nav__sub-link" data-nav-link>Реализм</a></li>
+              <li><a href="styles/miniature.html" class="site-nav__sub-link" data-nav-link>Миниатюрная Татуировка</a></li>
+              <li><a href="styles/lettering.html" class="site-nav__sub-link" data-nav-link>Надписи</a></li>
+              <li><a href="styles/contour.html" class="site-nav__sub-link" data-nav-link>Контурная графика</a></li>
             </ul>
           </div>
         </li>
@@ -118,16 +121,18 @@
     <!-- бегущая строка-разделитель -->
     <div class="marquee" aria-hidden="true">
       <div class="marquee__track">
-        <span>Fine Line</span>
-        <span>Blackwork</span>
-        <span>Minimalism</span>
-        <span>Ornamental</span>
-        <span>Dotwork</span>
-        <span>Fine Line</span>
-        <span>Blackwork</span>
-        <span>Minimalism</span>
-        <span>Ornamental</span>
-        <span>Dotwork</span>
+        <span>Трешполька</span>
+        <span>Графика</span>
+        <span>Графика с реализмом</span>
+        <span>Цветная Татуировка</span>
+        <span>Реализм</span>
+        <span>Миниатюрная Татуировка</span>
+        <span>Надписи</span>
+        <span>Контурная графика</span>
+        <span>Трешполька</span>
+        <span>Графика</span>
+        <span>Графика с реализмом</span>
+        <span>Цветная Татуировка</span>
       </div>
     </div>
 
@@ -161,7 +166,7 @@
       </div>
     </section>
 
-    <!-- ==================== STYLES ==================== -->
+<!-- ==================== STYLES ==================== -->
     <section class="styles" id="styles">
       <div class="container">
         <div class="styles__header">
@@ -169,52 +174,86 @@
           <h2 class="section-kicker">Направления</h2>
         </div>
 
-        <ul class="styles__list">
-          <li>
-            <a class="styles__item" href="styles/fine-line.html">
-              <span class="styles__num">01</span>
-              <span class="styles__name">Fine Line</span>
-              <span class="styles__desc">Тонкая графичная линия, минимум деталей</span>
-              <span class="styles__arrow" aria-hidden="true">→</span>
-            </a>
-          </li>
-          <li>
-            <a class="styles__item" href="styles/blackwork.html">
-              <span class="styles__num">02</span>
-              <span class="styles__name">Blackwork</span>
-              <span class="styles__desc">Плотная заливка, контраст и графичность</span>
-              <span class="styles__arrow" aria-hidden="true">→</span>
-            </a>
-          </li>
-          <li>
-            <a class="styles__item" href="styles/minimalism.html">
-              <span class="styles__num">03</span>
-              <span class="styles__name">Minimalism</span>
-              <span class="styles__desc">Лаконичные формы и сдержанная композиция</span>
-              <span class="styles__arrow" aria-hidden="true">→</span>
-            </a>
-          </li>
-          <li>
-            <a class="styles__item" href="styles/ornamental.html">
-              <span class="styles__num">04</span>
-              <span class="styles__name">Ornamental</span>
-              <span class="styles__desc">Орнаменты и геометрия, вдохновлённые узором</span>
-              <span class="styles__arrow" aria-hidden="true">→</span>
-            </a>
-          </li>
-          <li>
-            <a class="styles__item" href="styles/dotwork.html">
-              <span class="styles__num">05</span>
-              <span class="styles__name">Dotwork</span>
-              <span class="styles__desc">Текстура из точек, мягкие градиенты тона</span>
-              <span class="styles__arrow" aria-hidden="true">→</span>
-            </a>
-          </li>
-        </ul>
+        <div class="styles__layout">
+          <!-- Превью фото рядом со списком -->
+          <div class="styles__preview" aria-hidden="true">
+            <div class="styles__preview-sticky">
+              <div class="styles__preview-frame">
+                <!-- Замените data-src/src на реальные пути к фотографиям ваших работ -->
+                <img src="assets/images/style-trash-polka.jpg" alt="" class="styles__preview-img is-active" data-style-img="01">
+                <img src="assets/images/style-graphics.jpg" alt="" class="styles__preview-img" data-style-img="02">
+                <img src="assets/images/style-graphic-realism.jpg" alt="" class="styles__preview-img" data-style-img="03">
+                <img src="assets/images/style-color.jpg" alt="" class="styles__preview-img" data-style-img="04">
+                <img src="assets/images/style-realism.jpg" alt="" class="styles__preview-img" data-style-img="05">
+                <img src="assets/images/style-miniature.jpg" alt="" class="styles__preview-img" data-style-img="06">
+                <img src="assets/images/style-lettering.jpg" alt="" class="styles__preview-img" data-style-img="07">
+                <img src="assets/images/style-contour.jpg" alt="" class="styles__preview-img" data-style-img="08">
+              </div>
+            </div>
+          </div>
+
+          <!-- Список категорий -->
+          <ul class="styles__list">
+            <li>
+              <a class="styles__item is-active" href="styles/trash-polka.html" data-style-target="01">
+                <span class="styles__num">01</span>
+                <span class="styles__name">Трешполька</span>
+                <span class="styles__arrow" aria-hidden="true">→</span>
+              </a>
+            </li>
+            <li>
+              <a class="styles__item" href="styles/graphics.html" data-style-target="02">
+                <span class="styles__num">02</span>
+                <span class="styles__name">Графика</span>
+                <span class="styles__arrow" aria-hidden="true">→</span>
+              </a>
+            </li>
+            <li>
+              <a class="styles__item" href="styles/graphic-realism.html" data-style-target="03">
+                <span class="styles__num">03</span>
+                <span class="styles__name">Графика с реализмом</span>
+                <span class="styles__arrow" aria-hidden="true">→</span>
+              </a>
+            </li>
+            <li>
+              <a class="styles__item" href="styles/color.html" data-style-target="04">
+                <span class="styles__num">04</span>
+                <span class="styles__name">Цветная Татуировка</span>
+                <span class="styles__arrow" aria-hidden="true">→</span>
+              </a>
+            </li>
+            <li>
+              <a class="styles__item" href="styles/realism.html" data-style-target="05">
+                <span class="styles__num">05</span>
+                <span class="styles__name">Реализм</span>
+                <span class="styles__arrow" aria-hidden="true">→</span>
+              </a>
+            </li>
+            <li>
+              <a class="styles__item" href="styles/miniature.html" data-style-target="06">
+                <span class="styles__num">06</span>
+                <span class="styles__name">Миниатюрная Татуировка</span>
+                <span class="styles__arrow" aria-hidden="true">→</span>
+              </a>
+            </li>
+            <li>
+              <a class="styles__item" href="styles/lettering.html" data-style-target="07">
+                <span class="styles__num">07</span>
+                <span class="styles__name">Надписи</span>
+                <span class="styles__arrow" aria-hidden="true">→</span>
+              </a>
+            </li>
+            <li>
+              <a class="styles__item" href="styles/contour.html" data-style-target="08">
+                <span class="styles__num">08</span>
+                <span class="styles__name">Контурная графика</span>
+                <span class="styles__arrow" aria-hidden="true">→</span>
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </section>
-
-  </main>
 
   <!-- ==================== FOOTER ==================== -->
   <footer class="site-footer" id="footer">

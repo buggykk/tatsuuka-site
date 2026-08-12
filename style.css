@@ -619,7 +619,50 @@ body.nav-open {
   display: flex;
   align-items: baseline;
   gap: 1rem;
-  margin-bottom: clamp(2.5rem, 6vw, 4.5rem);
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.styles__layout {
+  display: grid;
+  grid-template-columns: clamp(280px, 32vw, 420px) 1fr;
+  gap: clamp(2.5rem, 5vw, 6rem);
+  align-items: start;
+}
+
+/* Фиксированный контекстный кадр фото */
+.styles__preview {
+  position: relative;
+  width: 100%;
+}
+
+.styles__preview-sticky {
+  position: sticky;
+  top: calc(var(--header-h) + 2rem);
+}
+
+.styles__preview-frame {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  width: 100%;
+  overflow: hidden;
+  background-color: #f4f4f4;
+  border: 1px solid var(--color-line);
+}
+
+.styles__preview-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.05);
+  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+}
+
+.styles__preview-img.is-active {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .styles__list {
@@ -628,32 +671,31 @@ body.nav-open {
 
 .styles__item {
   display: grid;
-  grid-template-columns: 60px 1fr 2fr 40px;
+  grid-template-columns: 50px 1fr 40px;
   align-items: center;
   gap: 1.5rem;
-  padding: 1.75rem 0;
+  padding: clamp(1.25rem, 2vw, 1.85rem) 0;
   border-bottom: 1px solid var(--color-line);
-  transition: padding-left var(--dur) var(--ease);
+  transition: padding-left var(--dur) var(--ease), color var(--dur) var(--ease);
 }
 
-.styles__item:hover {
+.styles__item:hover,
+.styles__item.is-active {
   padding-left: 0.75rem;
 }
 
 .styles__num {
   font-size: 0.85rem;
   color: var(--color-text-muted);
+  transition: color var(--dur) var(--ease);
 }
 
 .styles__name {
   font-family: var(--font-display);
-  font-size: clamp(1.5rem, 1.2rem + 1.5vw, 2.5rem);
+  font-size: clamp(1.25rem, 1rem + 1.2vw, 2.1rem);
   text-transform: uppercase;
-}
-
-.styles__desc {
-  color: var(--color-text-muted);
-  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
 }
 
 .styles__arrow {
@@ -663,9 +705,26 @@ body.nav-open {
   transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
 }
 
-.styles__item:hover .styles__arrow {
+.styles__item:hover .styles__arrow,
+.styles__item.is-active .styles__arrow {
   opacity: 1;
   transform: translateX(0);
+}
+
+.styles__item:hover .styles__num {
+  color: var(--color-ink);
+}
+
+/* Адаптивы для планшетов и мобильных устройств */
+@media (max-width: 900px) {
+  .styles__layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .styles__preview {
+    display: none; /* скрываем превью на мобильных для повышения производительности */
+  }
 }
 
 /* ---------- 11. FOOTER ---------- */
