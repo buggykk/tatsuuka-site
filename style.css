@@ -176,6 +176,55 @@ body.nav-open {
 }
 
 /* ---------- 5. HEADER ---------- */
+/* Единый размер и стиль для логотипа и кнопки меню */
+.header__logo,
+/* Кнопка меню: исходное состояние и размеры */
+.menu-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px; 
+  padding: 0 1.25rem;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: var(--tracking-md);
+  text-transform: uppercase;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(10, 10, 10, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #ffffff;
+  cursor: pointer;
+  /* Плавный переход только для цвета текста */
+  transition: color 0.3s var(--ease); 
+}
+
+/* При наведении темнеет ТОЛЬКО текст */
+.menu-btn:hover {
+  color: rgba(255, 255, 255, 0.5); 
+  border-color: rgba(255, 255, 255, 0.15);
+  background: rgba(10, 10, 10, 0.4);
+}
+
+/* Эффект наведения оставляем только для логотипа (по желанию) */
+.header__logo {
+  transition: border-color 0.3s var(--ease), background 0.3s var(--ease);
+}
+
+.header__logo:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Адаптивы для мобильных устройств */
+@media (max-width: 768px) {
+  .header__logo,
+  .menu-btn {
+    height: 38px;
+    padding: 0 0.85rem;
+    font-size: 0.75rem;
+  }
+}
 .site-header {
   position: fixed;
   inset-inline: 0;
