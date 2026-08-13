@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#ffffff">
-  <title>Морозов Тату — Студия авторской татуировки</title>
-  <meta name="description" content="Морозов Тату — студия авторской татуировки. Fine line, блэкворк и минимализм. Индивидуальные эскизы, созданные специально для вас.">
+  <title>Мозговский Тату — Студия авторской татуировки</title>
+  <meta name="description" content="Мозговский Тату — студия авторской татуировки. Fine line, блэкворк и минимализм. Индивидуальные эскизы, созданные специально для вас.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,7 +18,7 @@
   <!-- ==================== HEADER ==================== -->
   <header class="site-header" data-header>
     <div class="site-header__inner container">
-      <a href="#hero" class="brand">Морозов<span class="brand__accent">Тату</span></a>
+      <a href="#hero" class="brand">Мозговский<span class="brand__accent">Тату</span></a>
 
       <button type="button" class="menu-btn" data-menu-toggle aria-expanded="false" aria-controls="site-nav">
         <span class="menu-btn__label">Меню</span>
@@ -73,68 +73,74 @@
 
   <main id="main">
 
-    <!-- ==================== HERO ==================== -->
+<!-- ==================== HERO ==================== -->
     <section class="hero" id="hero">
       <div class="hero__media" data-hero-media>
-        <!-- Слайд 1: зацикленное тематическое видео -->
+        
+        <!-- Слайд 1: Коллаж из фото -->
         <div class="hero__slide is-active" data-hero-slide>
-          <video
-            class="hero__video"
-            autoplay
-            muted
-            loop
-            playsinline
-            poster="https://placehold.co/1600x900/0a0a0a/ffffff?text=Видео"
-          >
-            <!-- Замените src на реальный файл, напр. assets/video/hero.mp4 -->
-            <source src="assets/video/hero.mp4" type="video/mp4">
-          </video>
+          <div class="hero__collage">
+            <div class="hero__collage-item hero__collage-item--1">
+              <img src="assets/images/realism.jpg" alt="Работа студии 1">
+            </div>
+            <div class="hero__collage-item hero__collage-item--main">
+              <img src="assets/images/blackwork.jpg" alt="Главная работа">
+              <div class="hero__collage-badge">
+                <span class="hero__badge-title">Мозговский Тату</span>
+                <span class="hero__badge-sub">Авторская татуировка</span>
+              </div>
+            </div>
+            <div class="hero__collage-item hero__collage-item--2">
+              <img src="assets/images/decor.jpg" alt="Работа студии 2">
+            </div>
+          </div>
         </div>
 
-        <!-- Слайды 2–4: фото работ студии (замените src на реальные фото) -->
+        <!-- Слайд 2: Первое видео 9:16 -->
         <div class="hero__slide" data-hero-slide>
-          <img class="hero__photo" src="assets/images/blackwork.jpg" alt="Работа студии Морозов Тату — фото 1">
+          <div class="hero__video-wrapper">
+            <video
+              class="hero__video-vertical"
+              autoplay
+              muted
+              loop
+              playsinline
+              poster="https://placehold.co/1080x1920/0a0a0a/ffffff?text=Video+1"
+            >
+              <source src="assets/video/process-1.mp4" type="video/mp4">
+            </video>
+          </div>
         </div>
+
+        <!-- Слайд 3: Второе видео 9:16 -->
         <div class="hero__slide" data-hero-slide>
-          <img class="hero__photo" src="assets/images/decor.jpg" alt="Работа студии Морозов Тату — фото 2">
+          <div class="hero__video-wrapper">
+            <video
+              class="hero__video-vertical"
+              autoplay
+              muted
+              loop
+              playsinline
+              poster="https://placehold.co/1080x1920/0a0a0a/ffffff?text=Video+2"
+            >
+              <source src="assets/video/process-2.mp4" type="video/mp4">
+            </video>
+          </div>
         </div>
-        <div class="hero__slide" data-hero-slide>
-          <img class="hero__photo" src="assets/images/realism.jpg" alt="Работа студии Морозов Тату — фото 3">
-        </div>
+
       </div>
 
-      <button type="button" class="hero__nav hero__nav--prev" data-hero-prev aria-label="Предыдущий слайд">
-        <span class="hero__nav-arrow" aria-hidden="true">←</span>
-      </button>
-
-      <button type="button" class="hero__nav hero__nav--next" data-hero-next aria-label="Следующий слайд">
-        <span class="hero__nav-count" data-hero-count aria-hidden="true">01 / 04</span>
-        <span class="hero__nav-arrow" aria-hidden="true">→</span>
-      </button>
+      <!-- Переключатели внизу (для ПК и мобилок) -->
+      <div class="hero__tabs" aria-label="Тип контента">
+        <button type="button" class="hero__tab-btn is-active" data-hero-goto="0">Коллаж</button>
+        <button type="button" class="hero__tab-btn" data-hero-goto="1">Видео 01</button>
+        <button type="button" class="hero__tab-btn" data-hero-goto="2">Видео 02</button>
+      </div>
 
       <div class="hero__scroll" aria-hidden="true">
-        <span class="hero__scroll-line"></span>
         <span class="hero__scroll-text">Scroll</span>
       </div>
     </section>
-
-    <!-- бегущая строка-разделитель -->
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee__track">
-        <span>Трешполька</span>
-        <span>Графика</span>
-        <span>Графика с реализмом</span>
-        <span>Цветная Татуировка</span>
-        <span>Реализм</span>
-        <span>Миниатюрная Татуировка</span>
-        <span>Надписи</span>
-        <span>Контурная графика</span>
-        <span>Трешполька</span>
-        <span>Графика</span>
-        <span>Графика с реализмом</span>
-        <span>Цветная Татуировка</span>
-      </div>
-    </div>
 
     <!-- ==================== ABOUT ==================== -->
     <section class="about" id="about">
@@ -259,7 +265,7 @@
   <footer class="site-footer" id="footer">
     <div class="site-footer__top container">
       <div class="site-footer__brand">
-        <p class="brand">Морозов<span class="brand__accent">Тату</span></p>
+        <p class="brand">Мозговский<span class="brand__accent">Тату</span></p>
         <p class="site-footer__tagline">Студия авторской татуировки</p>
       </div>
 
@@ -278,7 +284,7 @@
     </div>
 
     <div class="site-footer__bottom container">
-      <p>© 2026 Морозов Тату. Все права защищены.</p>
+      <p>© 2026 Мозговский Тату. Все права защищены.</p>
       <a href="#hero" class="back-to-top">Наверх ↑</a>
     </div>
   </footer>

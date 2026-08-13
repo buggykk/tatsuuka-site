@@ -13,14 +13,13 @@
 
   if (!header || !nav || !menuToggle) return;
 
+  const menuLabel = menuToggle.querySelector(".menu-btn__label");
+
   function setStylesSubOpen(open) {
     if (!stylesToggle || !stylesSub) return;
     stylesSub.classList.toggle("is-open", open);
     stylesToggle.setAttribute("aria-expanded", open ? "true" : "false");
   }
-
-// 1. Находим лейбл кнопки (добавьте эту строку перед функциями):
-  const menuLabel = menuToggle.querySelector(".menu-btn__label");
 
   function openNav() {
     nav.classList.add("is-open");
@@ -29,7 +28,6 @@
     body.classList.add("nav-open");
     header.classList.add("is-scrolled");
 
-    // 2. Меняем текст на Закрыть (или Close)
     if (menuLabel) menuLabel.textContent = "Закрыть";
   }
 
@@ -41,7 +39,6 @@
     setStylesSubOpen(false);
     updateHeaderState();
 
-    // 3. Возвращаем текст Menu
     if (menuLabel) menuLabel.textContent = "Меню";
   }
 
@@ -82,93 +79,92 @@
   window.addEventListener("scroll", updateHeaderState, { passive: true });
   updateHeaderState();
 
-  // ---------- HERO: слайдер видео/фото ----------
-  // Слайд 0 (видео/гифка) не крутится сам — ждёт клик.
-  // После ухода с него фото листаются каждые 5 с и возвращаются на 0, снова ожидая ввод.
+  // ---------- HERO: Слайдер с поддержкой табов и свайпов ----------
   const heroSlides = document.querySelectorAll("[data-hero-slide]");
-  const heroPrev = document.querySelector("[data-hero-prev]");
-  const heroNext = document.querySelector("[data-hero-next]");
-  const heroCount = document.querySelector("[data-hero-count]");
-  const heroVideo = document.querySelector(".hero__video");
-  const HERO_MAIN_INDEX = 0;
-  const HERO_AUTO_MS = 5000;
-  let heroIndex = HERO_MAIN_INDEX;
-  let heroAutoEnabled = false;
-  let heroAutoTimer = null;
-
-  function clearHeroAuto() {
-    if (heroAutoTimer !== null) {
-      window.clearTimeout(heroAutoTimer);
-      heroAutoTimer = null;
-    }
-  }
-
-  function scheduleHeroAuto() {
-    clearHeroAuto();
-    if (!heroAutoEnabled || heroIndex === HERO_MAIN_INDEX) return;
-
-    heroAutoTimer = window.setTimeout(function () {
-      goToHeroSlide(heroIndex + 1, { fromAuto: true });
-    }, HERO_AUTO_MS);
-  }
+  const heroTabs = document.querySelectorAll("[data-hero-goto]");
+  const heroMedia = document.querySelector("[data-hero-media]");
+  let heroIndex = 0;
 
   function updateHeroSlide() {
+    // 1. Переключаем слайды и видео
     heroSlides.forEach(function (slide, i) {
-      slide.classList.toggle("is-active", i === heroIndex);
+      const isActive = i === heroIndex;
+      slide.classList.toggle("is-active", isActive);
+
+      const video = slide.querySelector("video");
+      if (video) {
+        if (isActive) {
+          video.currentTime = 0;
+          video.play().catch(function () {});
+        } else {
+          video.pause();
+        }
+      }
     });
 
-    if (heroCount) {
-      const current = String(heroIndex + 1).padStart(2, "0");
-      const total = String(heroSlides.length).padStart(2, "0");
-      heroCount.textContent = current + " / " + total;
-    }
-
-    if (heroVideo) {
-      const videoSlide = heroVideo.closest("[data-hero-slide]");
-      const isVideoActive = videoSlide && videoSlide.classList.contains("is-active");
-      if (isVideoActive) {
-        heroVideo.play().catch(function () {});
-      } else {
-        heroVideo.pause();
-      }
-    }
+    // 2. Синхронизируем подсветку кнопок снизу
+    heroTabs.forEach(function (tab) {
+      const targetIdx = Number(tab.getAttribute("data-hero-goto"));
+      tab.classList.toggle("is-active", targetIdx === heroIndex);
+    });
   }
 
-  function goToHeroSlide(nextIndex, options) {
-    const fromAuto = options && options.fromAuto;
+  function goToHeroSlide(nextIndex) {
     const total = heroSlides.length;
     if (!total) return;
-
     heroIndex = ((nextIndex % total) + total) % total;
-
-    if (heroIndex === HERO_MAIN_INDEX) {
-      heroAutoEnabled = false;
-      clearHeroAuto();
-    } else if (!fromAuto) {
-      // Любой ручной уход с гифки / листание фото включает автопрокрутку
-      heroAutoEnabled = true;
-    }
-
     updateHeroSlide();
-    scheduleHeroAuto();
   }
 
   if (heroSlides.length) {
-    if (heroPrev) {
-      heroPrev.addEventListener("click", function () {
-        goToHeroSlide(heroIndex - 1, { fromAuto: false });
-      });
-    }
+    // Клики по табам
+    heroTabs.forEach(function (tab) {
+      tab.addEventListener("click", function () {
+        const targetIdx = Number(tab.getAttribute("data-hero-goto"));
 
-    if (heroNext) {
-      heroNext.addEventListener("click", function () {
-        goToHeroSlide(heroIndex + 1, { fromAuto: false });
+        // Запускаем быструю анимацию вспышки при нажатии
+        tab.classList.remove("is-pressed");
+        // Небольшой хак для перезапуска CSS-анимации, если кликают несколько раз
+        void tab.offsetWidth; 
+        tab.classList.add("is-pressed");
+
+        // Удаляем класс анимации после её завершения
+        setTimeout(function () {
+          tab.classList.remove("is-pressed");
+        }, 350);
+
+        goToHeroSlide(targetIdx);
       });
+    });
+
+    // Свайпы пальцем для мобилок
+    if (heroMedia) {
+      let touchStartX = 0;
+      let touchEndX = 0;
+
+      heroMedia.addEventListener("touchstart", function (e) {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+
+      heroMedia.addEventListener("touchend", function (e) {
+        touchEndX = e.changedTouches[0].screenX;
+        const diff = touchStartX - touchEndX;
+
+        // Свайп влево -> следующий слайд
+        if (diff > 40) {
+          goToHeroSlide(heroIndex + 1);
+        }
+        // Свайп вправо -> предыдущий слайд
+        else if (diff < -40) {
+          goToHeroSlide(heroIndex - 1);
+        }
+      }, { passive: true });
     }
 
     updateHeroSlide();
   }
-// ---------- STYLES: Интерактивная смена фото при ховере ----------
+
+  // ---------- STYLES: Интерактивная смена фото при ховере ----------
   const styleItems = document.querySelectorAll("[data-style-target]");
   const styleImages = document.querySelectorAll("[data-style-img]");
 

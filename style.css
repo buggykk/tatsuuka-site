@@ -370,16 +370,17 @@ body.nav-open {
   letter-spacing: var(--tracking-md);
 }
 
-/* ---------- 7. HERO (медиа-слайдер: видео + фото) ---------- */
+/* ---------- 7. HERO (медиа-слайдер: Коллаж + Вертикальные видео 9:16) ---------- */
 .hero {
   position: relative;
   min-height: 100svh;
   overflow: hidden;
-  background: var(--color-ink);
+  background: #0d0d0d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* лёгкое затемнение сверху/снизу — чтобы хедер и стрелка были читаемы
-   поверх любого видео/фото */
 .hero::after {
   content: "";
   position: absolute;
@@ -388,10 +389,10 @@ body.nav-open {
   pointer-events: none;
   background: linear-gradient(
     180deg,
-    rgba(0, 0, 0, 0.35) 0%,
-    rgba(0, 0, 0, 0) 28%,
-    rgba(0, 0, 0, 0) 72%,
-    rgba(0, 0, 0, 0.3) 100%
+    rgba(0, 0, 0, 0.4) 0%,
+    rgba(0, 0, 0, 0) 25%,
+    rgba(0, 0, 0, 0) 75%,
+    rgba(0, 0, 0, 0.4) 100%
   );
 }
 
@@ -405,6 +406,11 @@ body.nav-open {
   inset: 0;
   opacity: 0;
   visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: var(--header-h);
+  padding-bottom: 4rem;
   transition: opacity 0.8s var(--ease), visibility 0s 0.8s;
 }
 
@@ -414,105 +420,214 @@ body.nav-open {
   transition: opacity 0.8s var(--ease), visibility 0s 0s;
 }
 
-.hero__video,
-.hero__photo {
+/* --- КОЛЛАЖ ИЗ ФОТО --- */
+.hero__collage {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr 1fr;
+  gap: clamp(1rem, 2.5vw, 2.5rem);
+  width: min(100% - (var(--gutter) * 2), 1100px);
+  height: clamp(380px, 62vh, 680px);
+  align-items: center;
+  margin: auto;
+}
+
+.hero__collage-item {
+  position: relative;
+  width: 100%;
+  height: 85%;
+  overflow: hidden;
+  border-radius: 2px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.hero__collage-item--main {
+  height: 100%;
+  z-index: 2;
+}
+
+.hero__collage-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.9);
+  transition: transform 1.2s var(--ease);
+}
+
+.hero__slide.is-active .hero__collage-item img {
+  transform: scale(1.03);
+}
+
+/* Плашка поверх центрального фото */
+.hero__collage-badge {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  right: 1.5rem;
+  padding: 1.25rem 1.5rem;
+  background: rgba(10, 10, 10, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.hero__badge-title {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 1.2vw, 1.35rem);
+  letter-spacing: var(--tracking-md);
+  text-transform: uppercase;
+}
+
+.hero__badge-sub {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: var(--tracking-sm);
+  text-transform: uppercase;
+}
+
+/* --- ВЕРТИКАЛЬНОЕ ВИДЕО 9:16 --- */
+.hero__video-wrapper {
+  position: relative;
+  height: clamp(400px, 68vh, 720px);
+  aspect-ratio: 9 / 16;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #000;
+}
+
+.hero__video-vertical {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-/* ---------- стрелки переключения слайдов ---------- */
-.hero__nav {
+/* --- ТАБЫ / ПЕРЕКЛЮЧАТЕЛИ ВНИЗУ --- */
+.hero__tabs {
   position: absolute;
-  top: 50%;
-  z-index: 2;
-  transform: translateY(-50%);
+  bottom: 2.25rem;
+  left: clamp(1.5rem, 4vw, 3.5rem);
+  z-index: 5;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.85rem;
-  color: #ffffff;
-}
-
-.hero__nav--prev {
-  left: clamp(1.25rem, 4vw, 3rem);
-}
-
-.hero__nav--next {
-  right: clamp(1.25rem, 4vw, 3rem);
-}
-
-.hero__nav-count {
-  font-family: var(--font-display);
-  font-size: 0.7rem;
-  letter-spacing: var(--tracking-sm);
-  color: rgba(255, 255, 255, 0.75);
-}
-
-.hero__nav-arrow {
-  font-family: var(--font-display);
-  font-size: 1.35rem;
-  line-height: 1;
-  transition: transform var(--dur) var(--ease);
-}
-
-.hero__nav--prev:hover .hero__nav-arrow,
-.hero__nav--prev:focus-visible .hero__nav-arrow {
-  transform: translateX(-6px);
-}
-
-.hero__nav--next:hover .hero__nav-arrow,
-.hero__nav--next:focus-visible .hero__nav-arrow {
-  transform: translateX(6px);
-}
-
-/* ---------- индикатор скролла ---------- */
-.hero__scroll {
-  position: absolute;
-  bottom: 2.5rem;
-  left: 50%;
-  z-index: 2;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   gap: 0.75rem;
 }
 
-.hero__scroll-line {
-  position: relative;
-  width: 1px;
-  height: 48px;
-  background: rgba(255, 255, 255, 0.35);
-  overflow: hidden;
-}
-
-.hero__scroll-line::after {
-  content: "";
-  position: absolute;
-  top: -100%;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #ffffff;
-  animation: scrollLine 2.2s var(--ease) infinite;
-}
-
-@keyframes scrollLine {
-  0% {
-    top: -100%;
-  }
-  60%,
-  100% {
-    top: 100%;
-  }
-}
-
-.hero__scroll-text {
-  font-size: 0.65rem;
+.hero__tab-btn {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
   letter-spacing: var(--tracking-md);
-  writing-mode: vertical-rl;
-  color: rgba(255, 255, 255, 0.75);
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  padding: 0.4rem 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+  transition: all var(--dur) var(--ease);
+}
+
+.hero__tab-btn:hover,
+.hero__tab-btn.is-active {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.1);
+}
+/* --- ТАБЫ / ПЕРЕКЛЮЧАТЕЛИ ВНИЗУ --- */
+.hero__tabs {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  display: flex;
+  gap: 0.5rem;
+  background: rgba(10, 10, 10, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 0;
+}
+
+.hero__tab-btn {
+  position: relative;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: var(--tracking-sm);
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  padding: 0.6rem 1.1rem;
+  border-radius: 0;
+  background: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: color 0.3s var(--ease), border-color 0.3s var(--ease), background-color 0.3s var(--ease);
+}
+/* Ховер на неактивные кнопки */
+.hero__tab-btn:hover {
+  color: rgba(255, 255, 255, 0.85);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+/* АКТИВНОЕ СОСТОЯНИЕ: Яркий белый текст + четкая белая рамка + лёгкое прозрачное свечение */
+.hero__tab-btn.is-active {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.08);
+}
+/* АНИМАЦИЯ НАЖАТИЯ: Вспышка / мгновенный отклик при клике или тапе */
+.hero__tab-btn.is-pressed {
+  animation: tabFlash 0.35s ease-out forwards;
+}
+@keyframes tabFlash {
+  0% {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #000000;
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero__tabs {
+    bottom: 1.5rem;
+    width: max-content;
+  }
+  
+  .hero__tab-btn {
+    font-size: 0.65rem;
+    padding: 0.5rem 0.85rem;
+  }
+}
+
+/* Адаптив для мобильных устройств */
+@media (max-width: 768px) {
+  .hero__collage {
+    grid-template-columns: 1fr;
+    height: 60vh;
+  }
+
+  .hero__collage-item--1,
+  .hero__collage-item--2 {
+    display: none; /* на смартфонах показываем только главное центральное фото */
+  }
+
+  .hero__collage-item--main {
+    height: 100%;
+  }
+
+  .hero__tabs {
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 1.5rem;
+  }
+
+  .hero__scroll {
+    display: none;
+  }
 }
 
 /* ---------- 8. БЕГУЩАЯ СТРОКА (marquee) ---------- */
