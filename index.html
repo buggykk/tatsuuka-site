@@ -18,7 +18,8 @@
   <!-- ==================== HEADER ==================== -->
   <header class="site-header" data-header>
     <div class="site-header__inner container">
-      <a href="#hero" class="brand">Мозговский<span class="brand__accent">Тату</span></a>
+      <!-- Логотип ссылается на главный экран без перезагрузки -->
+      <a href="#hero" class="brand header__logo" data-nav-link>Мозговский<span class="brand__accent">Тату</span></a>
 
       <button type="button" class="menu-btn" data-menu-toggle aria-expanded="false" aria-controls="site-nav">
         <span class="menu-btn__label">Меню</span>
@@ -73,7 +74,7 @@
 
   <main id="main">
 
-<!-- ==================== HERO ==================== -->
+    <!-- ==================== HERO ==================== -->
     <section class="hero" id="hero">
       <div class="hero__media" data-hero-media>
         
@@ -172,7 +173,7 @@
       </div>
     </section>
 
-<!-- ==================== STYLES ==================== -->
+    <!-- ==================== STYLES ==================== -->
     <section class="styles" id="styles">
       <div class="container">
         <div class="styles__header">
@@ -185,7 +186,6 @@
           <div class="styles__preview" aria-hidden="true">
             <div class="styles__preview-sticky">
               <div class="styles__preview-frame">
-                <!-- Замените data-src/src на реальные пути к фотографиям ваших работ -->
                 <img src="assets/images/style-trash-polka.jpg" alt="" class="styles__preview-img is-active" data-style-img="01">
                 <img src="assets/images/style-graphics.jpg" alt="" class="styles__preview-img" data-style-img="02">
                 <img src="assets/images/style-graphic-realism.jpg" alt="" class="styles__preview-img" data-style-img="03">
@@ -260,6 +260,8 @@
         </div>
       </div>
     </section>
+
+  </main>
 
   <!-- ==================== FOOTER ==================== -->
   <footer class="site-footer" id="footer">
