@@ -1053,6 +1053,25 @@ body.nav-open {
     display: none;
   }
 
+  /* Плитки направлений (иконки со стилями тату): 2 в ряд вместо 4 */
+  .styles__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .styles__tile-name {
+    font-size: 0.8rem;
+    left: 0.75rem;
+    right: 0.75rem;
+    bottom: 0.75rem;
+    letter-spacing: 0.01em;
+  }
+
+  .styles__tile-num {
+    top: 0.75rem;
+    left: 0.75rem;
+    font-size: 0.65rem;
+  }
+
   .works-grid {
     grid-template-columns: 1fr;
   }
