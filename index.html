@@ -32,11 +32,9 @@
     <div class="site-nav__inner container">
       <ol class="site-nav__list">
         <li class="site-nav__item">
-          <span class="site-nav__index">01</span>
           <a href="#about" class="site-nav__link" data-nav-link>Обо мне</a>
         </li>
         <li class="site-nav__item site-nav__item--expandable">
-          <span class="site-nav__index">02</span>
           <div class="site-nav__expand">
             <button
               type="button"
@@ -60,7 +58,6 @@
           </div>
         </li>
         <li class="site-nav__item">
-          <span class="site-nav__index">03</span>
           <a href="#footer" class="site-nav__link" data-nav-link>Контакты</a>
         </li>
       </ol>
@@ -77,9 +74,23 @@
     <!-- ==================== HERO ==================== -->
     <section class="hero" id="hero">
       <div class="hero__media" data-hero-media>
-        
-        <!-- Слайд 1: Коллаж из фото -->
-        <div class="hero__slide is-active" data-hero-slide>
+
+        <!-- Слайд 1: Видео (горизонтальное, во весь экран) -->
+        <div class="hero__slide hero__slide--video is-active" data-hero-slide>
+          <video
+            class="hero__video-full"
+            autoplay
+            muted
+            loop
+            playsinline
+            poster="https://placehold.co/1920x1080/0a0a0a/ffffff?text=Video"
+          >
+            <source src="assets/video/site.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <!-- Слайд 2: Коллаж из фото -->
+        <div class="hero__slide" data-hero-slide>
           <div class="hero__collage">
             <div class="hero__collage-item hero__collage-item--1">
               <img src="assets/images/realism.jpg" alt="Работа студии 1">
@@ -97,45 +108,12 @@
           </div>
         </div>
 
-        <!-- Слайд 2: Первое видео 9:16 -->
-        <div class="hero__slide" data-hero-slide>
-          <div class="hero__video-wrapper">
-            <video
-              class="hero__video-vertical"
-              autoplay
-              muted
-              loop
-              playsinline
-              poster="https://placehold.co/1080x1920/0a0a0a/ffffff?text=Video+1"
-            >
-              <source src="assets/video/process-1.mp4" type="video/mp4">
-            </video>
-          </div>
-        </div>
-
-        <!-- Слайд 3: Второе видео 9:16 -->
-        <div class="hero__slide" data-hero-slide>
-          <div class="hero__video-wrapper">
-            <video
-              class="hero__video-vertical"
-              autoplay
-              muted
-              loop
-              playsinline
-              poster="https://placehold.co/1080x1920/0a0a0a/ffffff?text=Video+2"
-            >
-              <source src="assets/video/process-2.mp4" type="video/mp4">
-            </video>
-          </div>
-        </div>
-
       </div>
 
       <!-- Переключатели внизу (для ПК и мобилок) -->
       <div class="hero__tabs" aria-label="Тип контента">
-        <button type="button" class="hero__tab-btn is-active" data-hero-goto="0">Фото</button>
-        <button type="button" class="hero__tab-btn" data-hero-goto="1">Видео 01</button>
-        <button type="button" class="hero__tab-btn" data-hero-goto="2">Видео 02</button>
+        <button type="button" class="hero__tab-btn is-active" data-hero-goto="0">Видео</button>
+        <button type="button" class="hero__tab-btn" data-hero-goto="1">Фото</button>
       </div>
 
       <div class="hero__scroll" aria-hidden="true">
@@ -143,11 +121,12 @@
       </div>
     </section>
 
+    
+
     <!-- ==================== ABOUT ==================== -->
     <section class="about" id="about">
       <div class="about__inner container">
         <div class="about__label">
-          <span class="section-index">01</span>
           <span class="section-kicker">Обо мне</span>
         </div>
 
@@ -174,92 +153,63 @@
     </section>
 
     <!-- ==================== STYLES ==================== -->
-    <section class="styles" id="styles">
-      <div class="container">
-        <div class="styles__header">
-          <span class="section-index">02</span>
-          <h2 class="section-kicker">Направления</h2>
+ <section class="about" id="about">
+      <div class="about__inner container">
+        <div class="about__label">
+          <span class="section-kicker">Направления</span>
         </div>
+      <div class="about__content">
+        <h2 class="about__title">Один мастер - множество стилей</h2>
+        <p class="about__text">У всех свой взгляд и характер, поэтому работа с разными стилями - необходимсоть. Подберем то, что нравится именно вам.</p>
+        </div>
+      </div>
 
-        <div class="styles__layout">
-          <!-- Превью фото рядом со списком -->
-          <div class="styles__preview" aria-hidden="true">
-            <div class="styles__preview-sticky">
-              <div class="styles__preview-frame">
-                <img src="assets/images/style-trash-polka.jpg" alt="" class="styles__preview-img is-active" data-style-img="01">
-                <img src="assets/images/style-graphics.jpg" alt="" class="styles__preview-img" data-style-img="02">
-                <img src="assets/images/style-graphic-realism.jpg" alt="" class="styles__preview-img" data-style-img="03">
-                <img src="assets/images/style-color.jpg" alt="" class="styles__preview-img" data-style-img="04">
-                <img src="assets/images/style-realism.jpg" alt="" class="styles__preview-img" data-style-img="05">
-                <img src="assets/images/style-miniature.jpg" alt="" class="styles__preview-img" data-style-img="06">
-                <img src="assets/images/style-lettering.jpg" alt="" class="styles__preview-img" data-style-img="07">
-                <img src="assets/images/style-contour.jpg" alt="" class="styles__preview-img" data-style-img="08">
-              </div>
-            </div>
-          </div>
-
-          <!-- Список категорий -->
-          <ul class="styles__list">
-            <li>
-              <a class="styles__item is-active" href="styles/trash-polka.html" data-style-target="01">
-                <span class="styles__num">01</span>
-                <span class="styles__name">Трешполька</span>
-                <span class="styles__arrow" aria-hidden="true">→</span>
-              </a>
-            </li>
-            <li>
-              <a class="styles__item" href="styles/graphics.html" data-style-target="02">
-                <span class="styles__num">02</span>
-                <span class="styles__name">Графика</span>
-                <span class="styles__arrow" aria-hidden="true">→</span>
-              </a>
-            </li>
-            <li>
-              <a class="styles__item" href="styles/graphic-realism.html" data-style-target="03">
-                <span class="styles__num">03</span>
-                <span class="styles__name">Графика с реализмом</span>
-                <span class="styles__arrow" aria-hidden="true">→</span>
-              </a>
-            </li>
-            <li>
-              <a class="styles__item" href="styles/color.html" data-style-target="04">
-                <span class="styles__num">04</span>
-                <span class="styles__name">Цветная Татуировка</span>
-                <span class="styles__arrow" aria-hidden="true">→</span>
-              </a>
-            </li>
-            <li>
-              <a class="styles__item" href="styles/realism.html" data-style-target="05">
-                <span class="styles__num">05</span>
-                <span class="styles__name">Реализм</span>
-                <span class="styles__arrow" aria-hidden="true">→</span>
-              </a>
-            </li>
-            <li>
-              <a class="styles__item" href="styles/miniature.html" data-style-target="06">
-                <span class="styles__num">06</span>
-                <span class="styles__name">Миниатюрная Татуировка</span>
-                <span class="styles__arrow" aria-hidden="true">→</span>
-              </a>
-            </li>
-            <li>
-              <a class="styles__item" href="styles/lettering.html" data-style-target="07">
-                <span class="styles__num">07</span>
-                <span class="styles__name">Надписи</span>
-                <span class="styles__arrow" aria-hidden="true">→</span>
-              </a>
-            </li>
-            <li>
-              <a class="styles__item" href="styles/contour.html" data-style-target="08">
-                <span class="styles__num">08</span>
-                <span class="styles__name">Контурная графика</span>
-                <span class="styles__arrow" aria-hidden="true">→</span>
-              </a>
-            </li>
-          </ul>
+        <!-- Сетка квадратных плиток: фото стиля + название поверх -->
+        <div class="styles__grid">
+          <a class="styles__tile" href="styles/trash-polka.html">
+            <img src="assets/images/style-trash-polka.jpg" alt="" class="styles__tile-img">
+            <span class="styles__tile-overlay" aria-hidden="true"></span>
+            <span class="styles__tile-name">Трешполька</span>
+          </a>
+          <a class="styles__tile" href="styles/graphics.html">
+            <img src="assets/images/style-graphics.jpg" alt="" class="styles__tile-img">
+            <span class="styles__tile-overlay" aria-hidden="true"></span>
+            <span class="styles__tile-name">Графика</span>
+          </a>
+          <a class="styles__tile" href="styles/graphic-realism.html">
+            <img src="assets/images/style-graphic-realism.jpg" alt="" class="styles__tile-img">
+            <span class="styles__tile-overlay" aria-hidden="true"></span>
+            <span class="styles__tile-name">Графика с реализмом</span>
+          </a>
+          <a class="styles__tile" href="styles/color.html">
+            <img src="assets/images/style-color.jpg" alt="" class="styles__tile-img">
+            <span class="styles__tile-overlay" aria-hidden="true"></span>
+            <span class="styles__tile-name">Цветная Татуировка</span>
+          </a>
+          <a class="styles__tile" href="styles/realism.html">
+            <img src="assets/images/style-realism.jpg" alt="" class="styles__tile-img">
+            <span class="styles__tile-overlay" aria-hidden="true"></span>
+            <span class="styles__tile-name">Реализм</span>
+          </a>
+          <a class="styles__tile" href="styles/miniature.html">
+            <img src="assets/images/style-miniature.jpg" alt="" class="styles__tile-img">
+            <span class="styles__tile-overlay" aria-hidden="true"></span>
+            <span class="styles__tile-name">Миниатюрная Татуировка</span>
+          </a>
+          <a class="styles__tile" href="styles/lettering.html">
+            <img src="assets/images/style-lettering.jpg" alt="" class="styles__tile-img">
+            <span class="styles__tile-overlay" aria-hidden="true"></span>
+            <span class="styles__tile-name">Надписи</span>
+          </a>
+          <a class="styles__tile" href="styles/contour.html">
+            <img src="assets/images/style-contour.jpg" alt="" class="styles__tile-img">
+            <span class="styles__tile-overlay" aria-hidden="true"></span>
+            <span class="styles__tile-name">Контурная графика</span>
+          </a>
         </div>
       </div>
     </section>
+
 
   </main>
 
@@ -273,15 +223,15 @@
 
       <div class="site-footer__col">
         <p class="site-footer__heading">Контакты</p>
-        <a href="mailto:hello@morozov-tattoo.example">hello@morozov-tattoo.example</a>
-        <a href="tel:+358000000000">+358 00 000 0000</a>
-        <p>Helsinki, Suomi</p>
+        <a href="mailto:example@mail.example">example@mail.example</a>
+        <a href="tel:+79000000000">+7 900 000 0000</a>
+        <p>Россия</p>
       </div>
 
       <div class="site-footer__col">
         <p class="site-footer__heading">Соцсети</p>
-        <a href="#">Instagram</a>
-        <a href="#">Telegram</a>
+        <a href="https://www.instagram.com/sova_ink/">Instagram</a>
+        <a href="https://t.me/Alex_Makeart">Telegram</a>
       </div>
     </div>
 
