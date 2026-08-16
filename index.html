@@ -110,11 +110,13 @@
 
       </div>
 
-      <!-- Переключатели внизу (для ПК и мобилок) -->
-      <div class="hero__tabs" aria-label="Тип контента">
-        <button type="button" class="hero__tab-btn is-active" data-hero-goto="0">Видео</button>
-        <button type="button" class="hero__tab-btn" data-hero-goto="1">Фото</button>
-      </div>
+      <!-- Стрелки-переключатели по бокам -->
+      <button type="button" class="hero__arrow-btn hero__arrow-btn--prev" data-hero-prev aria-label="Предыдущий слайд">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button type="button" class="hero__arrow-btn hero__arrow-btn--next" data-hero-next aria-label="Следующий слайд">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
 
       <div class="hero__scroll" aria-hidden="true">
         <span class="hero__scroll-text">Scroll</span>

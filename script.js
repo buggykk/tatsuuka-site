@@ -79,14 +79,13 @@
   window.addEventListener("scroll", updateHeaderState, { passive: true });
   updateHeaderState();
 
-  // ---------- HERO: Слайдер с поддержкой табов и свайпов ----------
+  // ---------- HERO: Слайдер со стрелками-переключателями ----------
   const heroSlides = document.querySelectorAll("[data-hero-slide]");
-  const heroTabs = document.querySelectorAll("[data-hero-goto]");
-  const heroMedia = document.querySelector("[data-hero-media]");
+  const heroPrevBtn = document.querySelector("[data-hero-prev]");
+  const heroNextBtn = document.querySelector("[data-hero-next]");
   let heroIndex = 0;
 
   function updateHeroSlide() {
-    // 1. Переключаем слайды и видео
     heroSlides.forEach(function (slide, i) {
       const isActive = i === heroIndex;
       slide.classList.toggle("is-active", isActive);
@@ -101,12 +100,6 @@
         }
       }
     });
-
-    // 2. Синхронизируем подсветку кнопок снизу
-    heroTabs.forEach(function (tab) {
-      const targetIdx = Number(tab.getAttribute("data-hero-goto"));
-      tab.classList.toggle("is-active", targetIdx === heroIndex);
-    });
   }
 
   function goToHeroSlide(nextIndex) {
@@ -116,49 +109,28 @@
     updateHeroSlide();
   }
 
+  function pressFlash(btn) {
+    btn.classList.remove("is-pressed");
+    void btn.offsetWidth;
+    btn.classList.add("is-pressed");
+    setTimeout(function () {
+      btn.classList.remove("is-pressed");
+    }, 350);
+  }
+
   if (heroSlides.length) {
-    // Клики по табам
-    heroTabs.forEach(function (tab) {
-      tab.addEventListener("click", function () {
-        const targetIdx = Number(tab.getAttribute("data-hero-goto"));
-
-        // Запускаем быструю анимацию вспышки при нажатии
-        tab.classList.remove("is-pressed");
-        // Небольшой хак для перезапуска CSS-анимации, если кликают несколько раз
-        void tab.offsetWidth; 
-        tab.classList.add("is-pressed");
-
-        // Удаляем класс анимации после её завершения
-        setTimeout(function () {
-          tab.classList.remove("is-pressed");
-        }, 350);
-
-        goToHeroSlide(targetIdx);
+    if (heroPrevBtn) {
+      heroPrevBtn.addEventListener("click", function () {
+        pressFlash(heroPrevBtn);
+        goToHeroSlide(heroIndex - 1);
       });
-    });
+    }
 
-    // Свайпы пальцем для мобилок
-    if (heroMedia) {
-      let touchStartX = 0;
-      let touchEndX = 0;
-
-      heroMedia.addEventListener("touchstart", function (e) {
-        touchStartX = e.changedTouches[0].screenX;
-      }, { passive: true });
-
-      heroMedia.addEventListener("touchend", function (e) {
-        touchEndX = e.changedTouches[0].screenX;
-        const diff = touchStartX - touchEndX;
-
-        // Свайп влево -> следующий слайд
-        if (diff > 40) {
-          goToHeroSlide(heroIndex + 1);
-        }
-        // Свайп вправо -> предыдущий слайд
-        else if (diff < -40) {
-          goToHeroSlide(heroIndex - 1);
-        }
-      }, { passive: true });
+    if (heroNextBtn) {
+      heroNextBtn.addEventListener("click", function () {
+        pressFlash(heroNextBtn);
+        goToHeroSlide(heroIndex + 1);
+      });
     }
 
     updateHeroSlide();
