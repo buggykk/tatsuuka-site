@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ffffff">
+  <title>Мозговский Тату — Алексей Мозговский, тату-мастер</title>
+  <meta name="description" content="Мозговский Тату — авторская татуировка Алексея Мозговского. Индивидуальные эскизы, созданные специально для вас.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ==================== HEADER ==================== -->
+  <header class="site-header" data-header>
+    <div class="site-header__inner container">
+      <!-- Логотип ссылается на главный экран без перезагрузки -->
+      <a href="#hero" class="brand header__logo" data-nav-link>Мозговский<span class="brand__accent">Тату</span></a>
+
+      <button type="button" class="menu-btn" data-menu-toggle aria-expanded="false" aria-controls="site-nav">
+        <span class="menu-btn__label">Меню</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ==================== ПОЛНОЭКРАННОЕ МЕНЮ ==================== -->
+  <nav class="site-nav" id="site-nav" data-nav aria-hidden="true">
+    <div class="site-nav__inner container">
+      <ol class="site-nav__list">
+        <li class="site-nav__item">
+          <a href="#about" class="site-nav__link" data-nav-link>Обо мне</a>
+        </li>
+                <li class="site-nav__item">
+          <a href="#sterility" class="site-nav__link" data-nav-link>Стерильность</a>
+        </li>
+        <li class="site-nav__item site-nav__item--expandable">
+          <div class="site-nav__expand">
+            <button
+              type="button"
+              class="site-nav__link site-nav__toggle"
+              data-nav-styles-toggle
+              aria-expanded="false"
+              aria-controls="nav-styles"
+            >
+              Направления
+            </button>
+            <ul class="site-nav__sub" id="nav-styles" data-nav-styles>
+              <li><a href="styles/trash-polka.html" class="site-nav__sub-link" data-nav-link>Трешполька</a></li>
+              <li><a href="styles/graphics.html" class="site-nav__sub-link" data-nav-link>Графика</a></li>
+              <li><a href="styles/graphic-realism.html" class="site-nav__sub-link" data-nav-link>Графика с реализмом</a></li>
+              <li><a href="styles/color.html" class="site-nav__sub-link" data-nav-link>Цветная Татуировка</a></li>
+              <li><a href="styles/realism.html" class="site-nav__sub-link" data-nav-link>Реализм</a></li>
+              <li><a href="styles/miniature.html" class="site-nav__sub-link" data-nav-link>Миниатюрная Татуировка</a></li>
+              <li><a href="styles/lettering.html" class="site-nav__sub-link" data-nav-link>Надписи</a></li>
+              <li><a href="styles/contour.html" class="site-nav__sub-link" data-nav-link>Контурная графика</a></li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="site-nav__item">
+          <a href="#footer" class="site-nav__link" data-nav-link>Контакты</a>
+        </li>
+      </ol>
+
+      <div class="site-nav__meta">
+        <p>Helsinki, Suomi</p>
+        <p><a href="mailto:hello@morozov-tattoo.example">hello@morozov-tattoo.example</a></p>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main">
+
+    <!-- ==================== HERO ==================== -->
+    <section class="hero" id="hero">
+      <div class="hero__media" data-hero-media>
+
+        <!-- Слайд 1: Видео (горизонтальное, во весь экран) -->
+        <div class="hero__slide hero__slide--video is-active" data-hero-slide>
+          <video
+            class="hero__video-full"
+            autoplay
+            muted
+            loop
+            playsinline
+            poster="https://placehold.co/1920x1080/0a0a0a/ffffff?text=Video"
+          >
+            <source src="assets/video/site.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <!-- Слайд 2: Коллаж из фото -->
+        <div class="hero__slide" data-hero-slide>
+          <div class="hero__collage">
+            <div class="hero__collage-item hero__collage-item--1">
+              <img src="assets/images/realism.jpg" alt="Работа студии 1">
+            </div>
+            <div class="hero__collage-item hero__collage-item--main">
+              <img src="assets/images/blackwork.jpg" alt="Главная работа">
+              <div class="hero__collage-badge">
+                <span class="hero__badge-title">Мозговский Тату</span>
+                <span class="hero__badge-sub">Авторская татуировка</span>
+              </div>
+            </div>
+            <div class="hero__collage-item hero__collage-item--2">
+              <img src="assets/images/decor.jpg" alt="Работа студии 2">
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Переключатели внизу (для ПК и мобилок) -->
+      <div class="hero__tabs" aria-label="Тип контента">
+        <button type="button" class="hero__tab-btn is-active" data-hero-goto="0">Видео</button>
+        <button type="button" class="hero__tab-btn" data-hero-goto="1">Фото</button>
+      </div>
+
+      <div class="hero__scroll" aria-hidden="true">
+        <span class="hero__scroll-text">Scroll</span>
+      </div>
+    </section>
+
+    
+
+    <!-- ==================== ABOUT ==================== -->
+    <section class="about" id="about">
+      <div class="about__inner container">
+        <div class="about__label">
+          <span class="section-index">01</span>
+          <span class="section-kicker">Обо мне</span>
+        </div>
+
+        <div class="about__content">
+          <h2 class="about__title">Тату для меня — это место, где искусство встречается с дисциплиной, а идея превращается в форму.</h2>
+          <p class="about__text">Я уважаю людей, которые выбирают качество, и вкладываю в каждую работу то, что важно мне самому — смысл, красоту и индивидуальность.</p>
+
+          <dl class="about__stats">
+            <div class="about__stat">
+              <dt>8 лет</dt>
+              <dd>практики</dd>
+            </div>
+            <div class="about__stat">
+              <dt>1200+</dt>
+              <dd>завершённых работ</dd>
+            </div>
+            <div class="about__stat">
+              <dt>1</dt>
+              <dd>мастер — от эскиза до тату</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== STERILITY (стерильность) ==================== -->
+    <section class="sterility" id="sterility">
+      <div class="container">
+        <div class="sterility__header">
+          <div class="sterility__label">
+            <span class="section-index">02</span>
+            <span class="section-kicker">Стерильность</span>
+          </div>
+          <h2 class="sterility__title">Чистота — это не опция, а стандарт</h2>
+          <p class="sterility__lead">Правило, которое не обсуждается: один и тот же протокол для каждого клиента, без исключений.</p>
+        </div>
+
+        <ol class="sterility__list">
+          <li class="sterility__row">
+            <span class="sterility__row-num" aria-hidden="true">01</span>
+            <div class="sterility__row-body">
+              <h3 class="sterility__row-title">Антисептик перед каждым клиентом</h3>
+              <p class="sterility__row-text">Рабочее место и кушетка обрабатываются антисептиком до того, как вы сядете в кресло — без исключений.</p>
+            </div>
+          </li>
+          <li class="sterility__row">
+            <span class="sterility__row-num" aria-hidden="true">02</span>
+            <div class="sterility__row-body">
+              <h3 class="sterility__row-title">Одноразовые иглы и расходники</h3>
+              <p class="sterility__row-text">Картриджи, иглы и все расходные материалы вскрываются при вас и используются только один раз.</p>
+            </div>
+          </li>
+          <li class="sterility__row">
+            <span class="sterility__row-num" aria-hidden="true">03</span>
+            <div class="sterility__row-body">
+              <h3 class="sterility__row-title">Стерилизация в автоклаве</h3>
+              <p class="sterility__row-text">Многоразовый инструмент проходит химическую обработку, а затем стерилизацию в автоклаве при +134 °C.</p>
+            </div>
+          </li>
+          <li class="sterility__row">
+            <span class="sterility__row-num" aria-hidden="true">04</span>
+            <div class="sterility__row-body">
+              <h3 class="sterility__row-title">Бактерицидный ультрафиолет</h3>
+              <p class="sterility__row-text">В студии дополнительно работает бактерицидная лампа — она снижает риск инфекции на поверхностях и в воздухе.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ==================== STYLES (направления, последний раздел) ==================== -->
+    <section class="styles-section" id="styles">
+      <div class="container">
+        <div class="styles-section__header">
+          <div class="styles-section__label">
+            <span class="section-index">03</span>
+            <span class="section-kicker">Направления</span>
+          </div>
+          <h2 class="styles-section__lead">
+            <span class="styles-section__lead-em">Один мастер, множество стилей</span> — у каждого свой характер, поэтому работа в разных направлениях необходима. Подберём то, что откликается именно вам.
+          </h2>
+        </div>
+
+        <!-- Сетка квадратных плиток: фото стиля + название поверх -->
+        <div class="styles__grid">
+          <a class="styles__tile" href="styles/trash-polka.html">
+            <img src="assets/images/style-trash-polka.jpg" alt="" class="styles__tile-img">
+            <span class="styles__tile-overlay" aria-hidden="true"></span>
+            <span class="styles__tile-name">Трешполька</span>
+          </a>
+          <a class="styles__tile" href="styles/graphics.html">
+            <img src="assets/images/style-graphics.jpg" alt="" class="styles__tile-img">
+            <span class="styles__tile-overlay" aria-hidden="true"></span>
+            <span class="styles__tile-name">Графика</span>
+          </a>
+          <a class="styles__tile" href="styles/graphic-realism.html">
+            <img src="assets/images/style-graphic-realism.jpg" alt="" class="styles__tile-img">
+            <span class="styles__tile-overlay" aria-hidden="true"></span>
+            <span class="styles__tile-name">Графика с реализмом</span>
+          </a>
+          <a class="styles__tile" href="styles/color.html">
+            <img src="assets/images/style-color.jpg" alt="" class="styles__tile-img">
+            <span class="styles__tile-overlay" aria-hidden="true"></span>
+            <span class="styles__tile-name">Цветная Татуировка</span>
+          </a>
+          <a class="styles__tile" href="styles/realism.html">
+            <img src="assets/images/style-realism.jpg" alt="" class="styles__tile-img">
+            <span class="styles__tile-overlay" aria-hidden="true"></span>
+            <span class="styles__tile-name">Реализм</span>
+          </a>
+          <a class="styles__tile" href="styles/miniature.html">
+            <img src="assets/images/style-miniature.jpg" alt="" class="styles__tile-img">
+            <span class="styles__tile-overlay" aria-hidden="true"></span>
+            <span class="styles__tile-name">Миниатюрная Татуировка</span>
+          </a>
+          <a class="styles__tile" href="styles/lettering.html">
+            <img src="assets/images/style-lettering.jpg" alt="" class="styles__tile-img">
+            <span class="styles__tile-overlay" aria-hidden="true"></span>
+            <span class="styles__tile-name">Надписи</span>
+          </a>
+          <a class="styles__tile" href="styles/contour.html">
+            <img src="assets/images/style-contour.jpg" alt="" class="styles__tile-img">
+            <span class="styles__tile-overlay" aria-hidden="true"></span>
+            <span class="styles__tile-name">Контурная графика</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="site-footer" id="footer">
+    <div class="site-footer__top container">
+      <div class="site-footer__brand">
+        <p class="brand">Мозговский<span class="brand__accent">Тату</span></p>
+        <p class="site-footer__tagline">Авторская татуировка Алексея Мозговского</p>
+      </div>
+
+      <div class="site-footer__col">
+        <p class="site-footer__heading">Контакты</p>
+        <a href="mailto:example@mail.example">example@mail.example</a>
+        <a href="tel:+79000000000">+7 900 000 0000</a>
+        <p>Россия</p>
+      </div>
+
+      <div class="site-footer__col">
+        <p class="site-footer__heading">Соцсети</p>
+        <a href="https://www.instagram.com/sova_ink/">Instagram</a>
+        <a href="https://t.me/Alex_Makeart">Telegram</a>
+      </div>
+    </div>
+
+    <div class="site-footer__bottom container">
+      <p>© 2026 Мозговский Тату. Все права защищены.</p>
+      <a href="#hero" class="back-to-top">Наверх ↑</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
