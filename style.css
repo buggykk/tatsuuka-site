@@ -132,7 +132,7 @@ table {
   --header-h: clamp(72px, 9vw, 96px);
   --container-w: 1240px;
   --gutter: clamp(1.5rem, 5vw, 4rem);
-  --section-py: clamp(6rem, 12vw, 11rem);
+  --section-py: clamp(4rem, 8vw, 7.5rem);
 
   /* Анимации */
   --ease: cubic-bezier(0.65, 0, 0.35, 1);
@@ -159,7 +159,7 @@ h3 {
 
 .section-kicker,
 .site-nav__index,
-.styles__num,
+.styles__tile-num,
 .site-footer__heading {
   font-family: var(--font-display);
   text-transform: uppercase;
@@ -723,14 +723,17 @@ body.nav-open {
 
 .about__label {
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
-  gap: 0.5rem;
+  gap: 0.6rem;
 }
 
 .section-index {
   font-family: var(--font-display);
-  font-size: 0.8rem;
+  font-size: 0.95rem;
+  font-weight: 500;
   color: var(--color-text-muted);
+  letter-spacing: 0.04em;
 }
 
 .section-kicker {
@@ -770,6 +773,47 @@ body.nav-open {
 }
 
 /* ---------- 10. STYLES (направления) ---------- */
+.styles-section {
+  padding-block: var(--section-py);
+  border-top: 1px solid var(--color-line);
+}
+
+/* Метка слева + единая заголовок-фраза справа: жирная часть, тире, и текст
+   продолжается сразу после тире одним потоком (в отличие от about и sterility,
+   где заголовок и описание — разные, отдельно стоящие блоки) */
+.styles-section__header {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: clamp(2rem, 5vw, 6rem);
+  align-items: start;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.styles-section__label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding-top: 0.35rem;
+}
+
+.styles-section__lead {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(1.4rem, 1.1rem + 1.4vw, 2.15rem);
+  line-height: 1.4;
+  color: var(--color-text-muted);
+  max-width: 46ch;
+}
+
+.styles-section__lead-em {
+  font-family: var(--font-display);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  color: var(--color-ink);
+}
+
 /* Сетка квадратных плиток: фото направления + название поверх */
 .styles__grid {
   display: grid;
@@ -839,100 +883,97 @@ body.nav-open {
   transform: translateY(-2px);
 }
 
-/* Фиксированный контекстный кадр фото */
-.styles__preview {
-  position: relative;
-  width: 100%;
+@media (max-width: 900px) {
+  .styles-section__header {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
 }
 
-.styles__preview-sticky {
-  position: sticky;
-  top: calc(var(--header-h) + 2rem);
-}
-
-.styles__preview-frame {
-  position: relative;
-  aspect-ratio: 3 / 4;
-  width: 100%;
-  overflow: hidden;
-  background-color: #f4f4f4;
-  border: 1px solid var(--color-line);
-}
-
-.styles__preview-img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0;
-  transform: scale(1.05);
-  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
-}
-
-.styles__preview-img.is-active {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.styles__list {
+/* ---------- 10.1 STERILITY (стерильность) ---------- */
+.sterility {
+  padding-block: var(--section-py);
   border-top: 1px solid var(--color-line);
 }
 
-.styles__item {
-  display: grid;
-  grid-template-columns: 50px 1fr 40px;
-  align-items: center;
-  gap: 1.5rem;
-  padding: clamp(1.25rem, 2vw, 1.85rem) 0;
-  border-bottom: 1px solid var(--color-line);
-  transition: padding-left var(--dur) var(--ease), color var(--dur) var(--ease);
+/* Шапка раздела: метка + крупный заголовок + короткий лид в одну колонку,
+   в отличие от about (стек «ярлык слева / контент справа») и styles (горизонтальный сплит) */
+.sterility__header {
+  max-width: 46rem;
+  margin-bottom: clamp(3rem, 6vw, 5rem);
 }
 
-.styles__item:hover,
-.styles__item.is-active {
-  padding-left: 0.75rem;
+.sterility__label {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
 }
 
-.styles__num {
-  font-size: 0.85rem;
-  color: var(--color-text-muted);
-  transition: color var(--dur) var(--ease);
-}
-
-.styles__name {
+.sterility__title {
   font-family: var(--font-display);
-  font-size: clamp(1.25rem, 1rem + 1.2vw, 2.1rem);
-  text-transform: uppercase;
+  font-size: var(--fs-h2);
   font-weight: 400;
-  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  margin-bottom: 1rem;
 }
 
-.styles__arrow {
-  justify-self: end;
-  opacity: 0;
-  transform: translateX(-6px);
-  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
+.sterility__lead {
+  color: var(--color-text-muted);
+  max-width: 42ch;
 }
 
-.styles__item:hover .styles__arrow,
-.styles__item.is-active .styles__arrow {
-  opacity: 1;
-  transform: translateX(0);
+/* Нумерованный список: крупные полупрозрачные цифры служат графическим акцентом */
+.sterility__list {
+  border-top: 1px solid var(--color-line);
 }
 
-.styles__item:hover .styles__num {
-  color: var(--color-ink);
+.sterility__row {
+  position: relative;
+  display: grid;
+  grid-template-columns: clamp(80px, 10vw, 140px) 1fr;
+  align-items: start;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  padding: clamp(1.75rem, 4vw, 2.75rem) 0;
+  border-bottom: 1px solid var(--color-line);
 }
 
-@media (max-width: 900px) {
-  .styles__layout {
+.sterility__row-num {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2.5rem, 2rem + 3vw, 4.5rem);
+  line-height: 1;
+  color: var(--color-line);
+}
+
+/* Заголовок и описание пункта — единый блок, текст всегда под названием */
+.sterility__row-body {
+  padding-top: clamp(0.3rem, 0.6vw, 0.6rem);
+}
+
+.sterility__row-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 1rem + 0.8vw, 1.5rem);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  margin-bottom: 0.6rem;
+}
+
+.sterility__row-text {
+  color: var(--color-text-muted);
+  max-width: 52ch;
+}
+
+@media (max-width: 720px) {
+  .sterility__row {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 0.75rem;
   }
 
-  .styles__preview {
-    display: none;
+  .sterility__row-num {
+    font-size: 1.75rem;
   }
 }
 
@@ -1085,19 +1126,6 @@ body.nav-open {
 }
 
 @media (max-width: 720px) {
-  .styles__item {
-    grid-template-columns: 32px 1fr;
-    row-gap: 0.5rem;
-  }
-
-  .styles__desc {
-    grid-column: 2 / 3;
-  }
-
-  .styles__arrow {
-    display: none;
-  }
-
   /* Плитки направлений (иконки со стилями тату): 2 в ряд вместо 4 */
   .styles__grid {
     grid-template-columns: repeat(2, 1fr);
