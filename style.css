@@ -426,45 +426,54 @@ body.nav-open {
 
 
 
-/* --- КОЛЛАЖ ИЗ ФОТО --- */
-.hero__collage {
+/* --- БОЛЬШАЯ ГАЛЕРЕЯ ИЗ ФОТО (МОЗАИКА, ВО ВЕСЬ ЭКРАН) --- */
+.hero__slide--gallery {
+  padding: 0;
+}
+
+.hero__gallery {
+  position: absolute;
+  inset: 0;
   display: grid;
-  grid-template-columns: 1fr 1.3fr 1fr;
-  gap: clamp(1rem, 2.5vw, 2.5rem);
-  width: min(100% - (var(--gutter) * 2), 1100px);
-  height: clamp(380px, 62vh, 680px);
-  align-items: center;
-  margin: auto;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    "one   two   three four"
+    "one   five  six   four";
+  gap: 3px;
 }
 
-.hero__collage-item {
+.hero__gallery-item {
   position: relative;
-  width: 100%;
-  height: 85%;
   overflow: hidden;
-  border-radius: 2px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
 }
 
-.hero__collage-item--main {
-  height: 100%;
-  z-index: 2;
-}
+.hero__gallery-item--1 { grid-area: one; }
+.hero__gallery-item--2 { grid-area: two; }
+.hero__gallery-item--3 { grid-area: three; }
+.hero__gallery-item--4 { grid-area: four; }
+.hero__gallery-item--5 { grid-area: five; }
+.hero__gallery-item--6 { grid-area: six; }
 
-.hero__collage-item img {
+.hero__gallery-item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(0.9);
-  transition: transform 1.2s var(--ease);
+  filter: brightness(0.85);
+  transition: transform 1.2s var(--ease), filter 0.4s var(--ease);
 }
 
-.hero__slide.is-active .hero__collage-item img {
-  transform: scale(1.03);
+.hero__slide.is-active .hero__gallery-item img {
+  transform: scale(1.02);
 }
 
-/* Плашка поверх центрального фото */
-.hero__collage-badge {
+.hero__gallery-item:hover img {
+  filter: brightness(1);
+  transform: scale(1.06);
+}
+
+/* Плашка поверх крупного фото галереи */
+.hero__gallery-badge {
   position: absolute;
   bottom: 1.5rem;
   left: 1.5rem;
@@ -478,7 +487,30 @@ body.nav-open {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
+  pointer-events: none;
 }
+
+/* --- ВАРИАНТ 2: РОВНАЯ СЕТКА 3×2 --- */
+.hero__gallery--v2 {
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-areas: none;
+}
+
+/* --- ВАРИАНТ 3: КРУПНОЕ ФОТО В ЦЕНТРЕ --- */
+.hero__gallery--v3 {
+  grid-template-columns: 1fr 1.8fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    "left1 center right1"
+    "left2 center right2";
+}
+
+.hero__gallery-item--left1 { grid-area: left1; }
+.hero__gallery-item--left2 { grid-area: left2; }
+.hero__gallery-item--center { grid-area: center; }
+.hero__gallery-item--right1 { grid-area: right1; }
+.hero__gallery-item--right2 { grid-area: right2; }
 
 .hero__badge-title {
   font-family: var(--font-display);
@@ -568,30 +600,44 @@ body.nav-open {
 
 /* Адаптив для Hero */
 @media (max-width: 768px) {
-  .hero__collage {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: auto;
-    max-height: 70vh;
-    padding-inline: 1rem;
+  .hero__gallery {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1.3fr 1fr 1fr;
+    grid-template-areas:
+      "one   one"
+      "two   three"
+      "five  six";
   }
 
-  .hero__collage-item--1,
-  .hero__collage-item--2 {
-    display: none; /* Скрываем боковые фото */
+  .hero__gallery-item--4 {
+    display: none; /* Скрываем лишнее фото на мобильном */
   }
 
-  .hero__collage-item--main {
-    width: 100%;
-    max-width: 360px; /* Ограничиваем ширину, чтобы смотрелось аккуратно */
-    height: 60vh;
-    margin: 0 auto;
+  .hero__gallery--v2 {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+
+  .hero__gallery--v2 .hero__gallery-item:nth-child(5),
+  .hero__gallery--v2 .hero__gallery-item:nth-child(6) {
+    display: none; /* Оставляем 4 фото на мобильном */
+  }
+
+  .hero__gallery--v3 {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1.4fr 1fr;
+    grid-template-areas:
+      "center center"
+      "left1  right1";
+  }
+
+  .hero__gallery-item--left2,
+  .hero__gallery-item--right2 {
+    display: none; /* Оставляем 3 фото на мобильном */
   }
 
   /* Исправление плашки на мобильном */
-  .hero__collage-badge {
+  .hero__gallery-badge {
     bottom: 1rem;
     left: 1rem;
     right: 1rem;
