@@ -34,6 +34,9 @@
         <li class="site-nav__item">
           <a href="#about" class="site-nav__link" data-nav-link>Обо мне</a>
         </li>
+                <li class="site-nav__item">
+          <a href="#sterility" class="site-nav__link" data-nav-link>Стерильность</a>
+        </li>
         <li class="site-nav__item site-nav__item--expandable">
           <div class="site-nav__expand">
             <button
@@ -89,32 +92,84 @@
           </video>
         </div>
 
-        <!-- Слайд 2: Коллаж из фото -->
-        <div class="hero__slide" data-hero-slide>
-          <div class="hero__collage">
-            <div class="hero__collage-item hero__collage-item--1">
-              <img src="assets/images/realism.jpg" alt="Работа студии 1">
+        <!-- Слайд 2: Большая галерея из фото (мозаика) -->
+        <div class="hero__slide hero__slide--gallery" data-hero-slide>
+          <div class="hero__gallery">
+            <div class="hero__gallery-item hero__gallery-item--1">
+              <img src="assets/images/decor.jpg" alt="Работа студии 1">
             </div>
-            <div class="hero__collage-item hero__collage-item--main">
-              <img src="assets/images/blackwork.jpg" alt="Главная работа">
-              <div class="hero__collage-badge">
-                <span class="hero__badge-title">Мозговский Тату</span>
-                <span class="hero__badge-sub">Авторская татуировка</span>
-              </div>
+            <div class="hero__gallery-item hero__gallery-item--2">
+              <img src="assets/images/blackwork.jpg" alt="Работа студии 2">
             </div>
-            <div class="hero__collage-item hero__collage-item--2">
-              <img src="assets/images/decor.jpg" alt="Работа студии 2">
+            <div class="hero__gallery-item hero__gallery-item--3">
+              <img src="assets/images/realism.jpg" alt="Работа студии 3">
+            </div>
+            <div class="hero__gallery-item hero__gallery-item--4">
+              <img src="https://placehold.co/600x1200/1a1a1a/ffffff?text=Фото+4" alt="Работа студии 4">
+            </div>
+            <div class="hero__gallery-item hero__gallery-item--5">
+              <img src="https://placehold.co/600x600/1a1a1a/ffffff?text=Фото+5" alt="Работа студии 5">
+            </div>
+            <div class="hero__gallery-item hero__gallery-item--6">
+              <img src="https://placehold.co/600x600/1a1a1a/ffffff?text=Фото+6" alt="Работа студии 6">
+            </div>
+          </div>
+        </div>
+
+        <!-- Слайд 3: Галерея, вариант 2 (ровная сетка 3×2) -->
+        <div class="hero__slide hero__slide--gallery" data-hero-slide>
+          <div class="hero__gallery hero__gallery--v2">
+            <div class="hero__gallery-item">
+              <img src="assets/images/realism.jpg" alt="Работа студии 7">
+            </div>
+            <div class="hero__gallery-item">
+              <img src="assets/images/style-color.jpg" alt="Работа студии 8">
+            </div>
+            <div class="hero__gallery-item">
+              <img src="assets/images/style-graphics.jpg" alt="Работа студии 9">
+            </div>
+            <div class="hero__gallery-item">
+              <img src="assets/images/style-graphics.jpg" alt="Работа студии 10">
+            </div>
+            <div class="hero__gallery-item">
+              <img src="assets/images/style-graphics.jpg" alt="Работа студии 11">
+            </div>
+            <div class="hero__gallery-item">
+              <img src="assets/images/style-graphics.jpg" alt="Работа студии 12">
+            </div>
+          </div>
+        </div>
+
+        <!-- Слайд 4: Галерея, вариант 3 (крупное фото в центре) -->
+        <div class="hero__slide hero__slide--gallery" data-hero-slide>
+          <div class="hero__gallery hero__gallery--v3">
+            <div class="hero__gallery-item hero__gallery-item--left1">
+              <img src="assets/images/style-graphic-realism.jpg" alt="Работа студии 13">
+            </div>
+            <div class="hero__gallery-item hero__gallery-item--left2">
+              <img src="assets/images/style-realism.jpg" alt="Работа студии 14">
+            </div>
+            <div class="hero__gallery-item hero__gallery-item--center">
+              <img src="assets/images/realism.jpg" alt="Работа студии 15">
+            </div>
+            <div class="hero__gallery-item hero__gallery-item--right1">
+              <img src="assets/images/style-trash-polka.jpg" alt="Работа студии 16">
+            </div>
+            <div class="hero__gallery-item hero__gallery-item--right2">
+              <img src="https://placehold.co/600x600/1a1a1a/ffffff?text=Фото+17" alt="Работа студии 17">
             </div>
           </div>
         </div>
 
       </div>
 
-      <!-- Переключатели внизу (для ПК и мобилок) -->
-      <div class="hero__tabs" aria-label="Тип контента">
-        <button type="button" class="hero__tab-btn is-active" data-hero-goto="0">Видео</button>
-        <button type="button" class="hero__tab-btn" data-hero-goto="1">Фото</button>
-      </div>
+      <!-- Стрелки-переключатели по бокам -->
+      <button type="button" class="hero__arrow-btn hero__arrow-btn--prev" data-hero-prev aria-label="Предыдущий слайд">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button type="button" class="hero__arrow-btn hero__arrow-btn--next" data-hero-next aria-label="Следующий слайд">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
 
       <div class="hero__scroll" aria-hidden="true">
         <span class="hero__scroll-text">Scroll</span>
@@ -127,12 +182,13 @@
     <section class="about" id="about">
       <div class="about__inner container">
         <div class="about__label">
+          <span class="section-index">01</span>
           <span class="section-kicker">Обо мне</span>
         </div>
 
         <div class="about__content">
-          <h2 class="about__title">Пространство, где татуировка становится осознанным жестом</h2>
-          <p class="about__text">Я — Алексей Мозговский, работаю на стыке графики и минимализма. Каждый эскиз я создаю индивидуально: от первого разговора до финальной линии.</p>
+          <h2 class="about__title">Тату для меня — это место, где искусство встречается с дисциплиной, а идея превращается в форму.</h2>
+          <p class="about__text">Я уважаю людей, которые выбирают качество, и вкладываю в каждую работу то, что важно мне самому — смысл, красоту и индивидуальность.</p>
 
           <dl class="about__stats">
             <div class="about__stat">
@@ -152,17 +208,63 @@
       </div>
     </section>
 
-    <!-- ==================== STYLES ==================== -->
- <section class="about" id="about">
-      <div class="about__inner container">
-        <div class="about__label">
-          <span class="section-kicker">Направления</span>
+    <!-- ==================== STERILITY (стерильность) ==================== -->
+    <section class="sterility" id="sterility">
+      <div class="container">
+        <div class="sterility__header">
+          <div class="sterility__label">
+            <span class="section-index">02</span>
+            <span class="section-kicker">Стерильность</span>
+          </div>
+          <h2 class="sterility__title">Чистота — это не опция, а стандарт</h2>
+          <p class="sterility__lead">Правило, которое не обсуждается: один и тот же протокол для каждого клиента, без исключений.</p>
         </div>
-      <div class="about__content">
-        <h2 class="about__title">Один мастер - множество стилей</h2>
-        <p class="about__text">У всех свой взгляд и характер, поэтому работа с разными стилями - необходимсоть. Подберем то, что нравится именно вам.</p>
-        </div>
+
+        <ol class="sterility__list">
+          <li class="sterility__row">
+            <span class="sterility__row-num" aria-hidden="true">01</span>
+            <div class="sterility__row-body">
+              <h3 class="sterility__row-title">Антисептик перед каждым клиентом</h3>
+              <p class="sterility__row-text">Рабочее место и кушетка обрабатываются антисептиком до того, как вы сядете в кресло — без исключений.</p>
+            </div>
+          </li>
+          <li class="sterility__row">
+            <span class="sterility__row-num" aria-hidden="true">02</span>
+            <div class="sterility__row-body">
+              <h3 class="sterility__row-title">Одноразовые иглы и расходники</h3>
+              <p class="sterility__row-text">Картриджи, иглы и все расходные материалы вскрываются при вас и используются только один раз.</p>
+            </div>
+          </li>
+          <li class="sterility__row">
+            <span class="sterility__row-num" aria-hidden="true">03</span>
+            <div class="sterility__row-body">
+              <h3 class="sterility__row-title">Стерилизация в автоклаве</h3>
+              <p class="sterility__row-text">Многоразовый инструмент проходит химическую обработку, а затем стерилизацию в автоклаве при +134 °C.</p>
+            </div>
+          </li>
+          <li class="sterility__row">
+            <span class="sterility__row-num" aria-hidden="true">04</span>
+            <div class="sterility__row-body">
+              <h3 class="sterility__row-title">Бактерицидный ультрафиолет</h3>
+              <p class="sterility__row-text">В студии дополнительно работает бактерицидная лампа — она снижает риск инфекции на поверхностях и в воздухе.</p>
+            </div>
+          </li>
+        </ol>
       </div>
+    </section>
+
+    <!-- ==================== STYLES (направления, последний раздел) ==================== -->
+    <section class="styles-section" id="styles">
+      <div class="container">
+        <div class="styles-section__header">
+          <div class="styles-section__label">
+            <span class="section-index">03</span>
+            <span class="section-kicker">Направления</span>
+          </div>
+          <h2 class="styles-section__lead">
+            <span class="styles-section__lead-em">Один мастер, множество стилей</span> — у каждого свой характер, поэтому работа в разных направлениях необходима. Подберём то, что откликается именно вам.
+          </h2>
+        </div>
 
         <!-- Сетка квадратных плиток: фото стиля + название поверх -->
         <div class="styles__grid">
@@ -209,7 +311,6 @@
         </div>
       </div>
     </section>
-
 
   </main>
 
